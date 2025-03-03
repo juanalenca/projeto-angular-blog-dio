@@ -1,0 +1,40 @@
+/* big-card.component.css */
+.container__big-card {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 1rem auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.big-card__photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.big-card__title h1 {
+  margin: 0.5rem 0;
+  font-size: 1.8rem;
+  color: #bb86fc;
+}
+
+.big-card__title a:hover {
+  color: #03dac6;
+}
+
+.big-card__description p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.big-card__description a {
+  color: #03dac6;
+  transition: color 0.3s ease;
+}
+
+.big-card__description a:hover {
+  color: #bb86fc;
+}

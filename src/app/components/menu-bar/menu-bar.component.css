@@ -1,0 +1,35 @@
+/* menu-bar.component.css */
+.container__menu-bar {
+  background-color: #1e1e1e;
+  padding: 0.5rem 1rem;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.container__menu-bar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.container__menu-bar li {
+  font-size: 1rem;
+}
+
+.container__menu-bar a {
+  color: #bb86fc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.container__menu-bar a:hover {
+  color: #03dac6;
+}
+
+.container__menu-bar span {
+  color: #e0e0e0;
+}

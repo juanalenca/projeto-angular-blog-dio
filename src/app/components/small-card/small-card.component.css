@@ -1,0 +1,43 @@
+/* small-card.component.css */
+.container__small-card {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem auto;
+  max-width: 300px;
+  text-align: center;
+}
+
+.container__small-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-card__photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.small-card__title h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.small-card__title a {
+  color: #bb86fc;
+  transition: color 0.3s ease;
+}
+
+.small-card__title a:hover {
+  color: #03dac6;
+}
+
+.container__small-card__separator hr {
+  margin-top: 1rem;
+  border: none;
+  height: 1px;
+  background-color: #333;
+}

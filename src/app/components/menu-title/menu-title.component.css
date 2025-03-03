@@ -1,0 +1,19 @@
+/* menu-title.component.css */
+.container__menu-title {
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 800px;
+}
+
+.container__menu-title hr {
+  border: none;
+  height: 1px;
+  background-color: #333;
+  margin: 0.5rem 0;
+}
+
+.container__menu-title h1 {
+  font-size: 2rem;
+  color: #e0e0e0;
+  margin: 0;
+}
