@@ -1,88 +1,110 @@
-# AngularBlog
+# Blog BideoGēmu 🎮
 
-## Sobre o Projeto
-O **AngularBlog** é uma aplicação web demonstrativa, criada com Angular CLI (versão 14.1.2), que exemplifica boas práticas de desenvolvimento com Angular. O projeto utiliza componentes, serviços, rotas e testes automatizados para garantir qualidade e escalabilidade.
+Blog de notícias sobre videogames construído com **Angular 14**, desenvolvido como projeto prático da plataforma [DIO](https://www.dio.me/). A aplicação simula um portal de notícias gaming com navegação entre artigos, componentes reutilizáveis e arquitetura modular baseada em princípios **SOLID**.
 
-## Sumário
-- [Descrição do Projeto](#sobre-o-projeto)
-- [Pré-requisitos](#pré-requisitos)
-- [Instalação](#instalação)
-- [Execução do Servidor de Desenvolvimento](#execução-do-servidor-de-desenvolvimento)
-- [Geração de Código](#geração-de-código)
-- [Build do Projeto](#build-do-projeto)
-- [Testes](#testes)
-  - [Testes Unitários](#testes-unitários)
-  - [Testes End-to-End](#testes-end-to-end)
-- [Ajuda e Documentação](#ajuda-e-documentação)
-- [Contribuições](#contribuições)
+---
 
-## Pré-requisitos
-Antes de iniciar, certifique-se de ter instalado:
+## Objetivo
 
-- **Node.js** (versão 14 ou superior)
-- **Angular CLI** (versão 14.1.2)
+Consolidar conhecimentos fundamentais do ecossistema Angular através da construção de um blog funcional, abordando:
 
-## Instalação
+- Componentização e reutilização de elementos visuais
+- Roteamento dinâmico com parâmetros (`/content/:id`)
+- Data binding unidirecional via `@Input()`
+- Injeção de Dependência com Services (`@Injectable`)
+- Tipagem forte com Interfaces TypeScript
+- Renderização condicional e iterativa (`*ngIf`, `*ngFor`)
+
+---
+
+## Funcionalidades
+
+- **Página Home:** Exibe um artigo principal em destaque (`BigCardComponent`) e uma listagem lateral de artigos secundários (`SmallCardComponent`), ambos alimentados dinamicamente via `ArticleService`.
+- **Página de Conteúdo:** Ao clicar em qualquer card, o usuário é redirecionado para a rota `/content/:id`, onde o artigo completo é renderizado com título, imagem de capa e descrição em HTML interpretado (`[innerHTML]`).
+- **Menu de Navegação:** Barra superior com links externos para LinkedIn e GitHub do autor.
+- **Header Temático:** Título estilizado "Blog BideoGēmu" com separadores visuais.
+
+---
+
+## Arquitetura do Projeto
+
+```text
+src/app/
+├── components/
+│   ├── big-card/            # Card principal de destaque (imagem, título, descrição)
+│   ├── small-card/          # Card compacto lateral (imagem, título)
+│   ├── menu-bar/            # Barra de navegação com links sociais
+│   └── menu-title/          # Header com título do blog
+├── data/
+│   └── dataFake.ts          # Banco de dados mock tipado (Article[])
+├── models/
+│   └── article.ts           # Interface Article (id, title, description, photoCover)
+├── pages/
+│   ├── home/                # Página inicial — consome ArticleService via DI
+│   └── content/             # Página de artigo individual — busca por ID via Service
+├── services/
+│   └── article.service.ts   # Camada de acesso a dados centralizada (@Injectable)
+├── app-routing.module.ts    # Definição de rotas (Home e Content)
+├── app.module.ts            # Módulo raiz com declarações de componentes
+└── app.component.*          # Componente raiz (router-outlet)
+```
+
+### Fluxo de Dados
+
+```
+dataFake.ts (Article[]) → ArticleService → Pages (Home / Content) → Components (Cards)
+```
+
+Os componentes de página (`HomeComponent`, `ContentComponent`) nunca acessam os dados diretamente. Toda requisição passa pelo `ArticleService`, respeitando o princípio de **Inversão de Dependência** (SOLID).
+
+---
+
+## Stack Tecnológica
+
+| Tecnologia | Versão | Função |
+|---|---|---|
+| Angular | 14.1.0 | Framework SPA |
+| TypeScript | 4.7.2 | Tipagem estática |
+| RxJS | 7.5.0 | Programação reativa (ParamMap) |
+| Karma + Jasmine | 6.4 / 4.2 | Testes unitários |
+| Zone.js | 0.11.4 | Detecção de mudanças |
+
+---
+
+## Como Executar
+
 1. Clone o repositório:
-   ```sh
-   git clone https://seu-repositorio.git
-   cd AngularBlog
+   ```bash
+   git clone https://github.com/juanalenca/projeto-angular-blog-dio.git
    ```
+
 2. Instale as dependências:
-   ```sh
+   ```bash
+   cd projeto-angular-blog-dio
    npm install
    ```
 
-## Execução do Servidor de Desenvolvimento
-Para iniciar o servidor de desenvolvimento, execute:
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   ng serve
+   ```
 
-```sh
-ng serve
-```
+4. Acesse no navegador:
+   ```
+   http://localhost:4200
+   ```
 
-Acesse a aplicação em: [http://localhost:4200/](http://localhost:4200/). O servidor recarrega automaticamente ao detectar alterações nos arquivos.
+---
 
-## Geração de Código
-Para gerar novos componentes, diretivas, pipes, serviços e outros elementos, utilize o Angular CLI. Exemplo para criar um novo componente:
+## Conteúdo Atual
 
-```sh
-ng generate component nome-do-componente
-```
+O blog contém 4 artigos mock sobre o universo gaming:
 
-## Build do Projeto
-Para gerar a versão de produção, execute:
+| ID | Título |
+|---|---|
+| 1 | Grand Theft Auto VI ganha novo trailer |
+| 2 | Monster Hunter Wilds quebra recordes |
+| 3 | Novo Batman Arkham em desenvolvimento? |
+| 4 | Hogwarts Legacy 2 anunciado para 2026 |
 
-```sh
-ng build
-```
-
-Os arquivos gerados estarão no diretório `dist/`.
-
-## Testes
-### Testes Unitários
-Execute os testes unitários com o Karma:
-
-```sh
-ng test
-```
-
-### Testes End-to-End
-Para rodar os testes end-to-end:
-
-```sh
-ng e2e
-```
-
-> Obs.: Certifique-se de que um pacote de testes E2E esteja configurado no projeto.
-
-## Ajuda e Documentação
-Para mais informações sobre o Angular CLI, consulte:
-
-- [Documentação Oficial do Angular CLI](https://angular.io/cli)
-- [Referência de Comandos do Angular](https://angular.io/guide/cli-commands)
-
-## Contribuições
-Contribuições são bem-vindas! Para colaborar:
-
-1. Abra uma issue para relatar problemas ou sugerir melhorias.
-2. Envie um pull request com suas alterações seguindo boas práticas de desenvolvimento.
+Para adicionar novos artigos, insira objetos no array `DATA_FAKE` em `src/app/data/dataFake.ts` seguindo a interface `Article`.

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from '../../models/article';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  mainArticle!: Article;
+  sideArticles: Article[] = [];
 
-  constructor() { }
+  constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
+    const articles = this.articleService.getArticles();
+    if (articles.length > 0) {
+      this.mainArticle = articles[0];
+      this.sideArticles = articles.slice(1);
+    }
   }
-
 }

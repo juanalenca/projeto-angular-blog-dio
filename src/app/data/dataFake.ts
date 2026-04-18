@@ -1,4 +1,6 @@
-export const DATA_FAKE = [
+import { Article } from '../models/article';
+
+export const DATA_FAKE: Article[] = [
   {
     "id": "1",
     "title": "GRAND THEFT AUTO VI GANHA NOVO TRAILER",
